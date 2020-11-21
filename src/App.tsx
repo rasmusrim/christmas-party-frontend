@@ -1,24 +1,35 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {ParticipantType} from "./types/ParticipantType";
+import {Stage} from "./Stage/Stage";
+import {useKeyPress} from "./hooks/useKeyPress";
 
 function App() {
+
+  const [participants, setParticipants]  = useState<ParticipantType[]>([]);
+  const enterPressed = useKeyPress('Enter');
+
+  useEffect(() => {
+    const participant: ParticipantType = {
+      id: '1',
+      progress: 0
+    }
+
+    setParticipants([participant])
+  }, [])
+
+  useEffect(() => {
+    if (enterPressed) {
+      setParticipants(participants.map(participant => ({...participant, progress: participant.progress + 1})));
+    }
+  }, [enterPressed])
+
+    console.log(participants)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Stage participants={participants}/>
     </div>
   );
 }
