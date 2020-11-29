@@ -1,31 +1,19 @@
-import {Coordinates} from "../types/Coordinates";
+
 import ChristmasTreeImage from '../assets/tree.png';
+import {Sprite} from "./Sprite";
 
-export default class ChristmasTree {
-  private position: Coordinates;
-  private image: HTMLImageElement;
-  private graphicsContext: CanvasRenderingContext2D;
-  public scale: number = 0.2;
+export default class ChristmasTree extends Sprite {
 
-  constructor(x: number, y: number, graphicsContext: CanvasRenderingContext2D) {
-    this.position = {x, y};
-    this.graphicsContext = graphicsContext;
+  render(timestamp: number) {
+    this.graphicsContext.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
   }
 
-  loadImage() {
-    return new Promise(resolve => {
-      this.image = new Image();
-      this.image.src = ChristmasTreeImage;
-      this.image.style.display = 'none';
-      document.querySelector('body').append(this.image)
-      this.image.onload = () => {
-        resolve(true);
-      }
-    })
+  getImageAspectRatio(): number {
+    return 1.3333333;
   }
 
-  render() {
-    this.graphicsContext.drawImage(this.image, this.position.x, this.position.y, 1350 * this.scale, 1800 * this.scale);
+  getImageFile(): string {
+    return ChristmasTreeImage;
   }
 
 
