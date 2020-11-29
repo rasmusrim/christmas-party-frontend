@@ -20,7 +20,6 @@
   "homepage": "https://github.com/rasmusrim/christmas-party-frontend#readme",
   "devDependencies": {
     "@types/lodash": "^4.14.165",
-    "@types/randomstring": "^1.1.6",
     "copy-webpack-plugin": "^6.3.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
@@ -31,7 +30,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "lodash": "^4.17.20",
-    "randomstring": "^1.1.5"
+    "lodash": "^4.17.20"
   }
 }
