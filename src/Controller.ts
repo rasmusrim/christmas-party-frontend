@@ -12,6 +12,7 @@ export default class Controller {
   private canvasHeight: number;
   private dpi: number;
   private participantWidth: number;
+  private participantHeight: number;
   private dancingCircleCenter: Coordinates;
   private dancingCircleSize: CircleSize;
 
@@ -56,8 +57,9 @@ export default class Controller {
     this.christmasTree.position.y = (this.canvasHeight / 2 * this.dpi - this.christmasTree.height / 2)
 
     this.participantWidth = this.canvasWidth / 6;
+    this.participantHeight = this.participantWidth * new Participant(this.graphicsContext).getImageAspectRatio();
 
-    this.dancingCircleCenter = { x: (this.canvasWidth / 2) * this.dpi, y: (this.canvasHeight / 2) * this.dpi};
+    this.dancingCircleCenter = { x: (this.canvasWidth * this.dpi / 2) - this.participantWidth / 2, y: (this.canvasHeight * this.dpi / 2) - this.participantHeight / 2};
     this.dancingCircleSize = {xRadius: this.canvasWidth / 3 * this.dpi, yRadius: this.canvasHeight / 3 * this.dpi};
 
     console.log(this.dancingCircleCenter)
@@ -89,12 +91,20 @@ export default class Controller {
     this.graphicsContext.clearRect(0, 0, this.canvasWidth * this.dpi, this.canvasHeight * this.dpi);
     this.christmasTree.render(timestamp);
 
-    Object.keys(this.participants).forEach(key => {
-      const participant = this.participants[key];
-      participant.goStep();
+    const participants = Object.values(this.participants);
 
+    participants.filter(participant => participant.circleProgress > 50).forEach(participant => {
+      participant.goStep();
       participant.render(timestamp);
     })
+
+    this.christmasTree.render(timestamp);
+
+    participants.filter(participant => participant.circleProgress < 50).forEach(participant => {
+      participant.goStep();
+      participant.render(timestamp);
+    })
+
 
   }
 

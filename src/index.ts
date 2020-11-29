@@ -10,15 +10,11 @@ controller.init('#stage').then(() => {
   controller.start()
 
   for (let i = 0; i < 10; i++) {
-    setTimeout(() => controller.addParticipant(), i * 1000);
+    setTimeout(() => controller.addParticipant(), i * 500);
   }
 
 });
 
-const button = document.createElement('button');
-button.onclick = () => controller.addParticipant();
-button.innerHTML = 'Add participant';
-document.querySelector('body').prepend(button);
 
 
 

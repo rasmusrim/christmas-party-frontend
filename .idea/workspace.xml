@@ -11,15 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ba718a2-9504-4f9f-9508-0acf7ab6b9ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sprites/Participant.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/Sprite.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/CircleSize.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/ChristmasTree.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/ChristmasTree.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/Participant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/Participant.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +53,7 @@
       <updated>1605960569645</updated>
       <workItem from="1605960571383" duration="6586000" />
       <workItem from="1606548994494" duration="8550000" />
-      <workItem from="1606652757234" duration="4515000" />
+      <workItem from="1606652757234" duration="6204000" />
     </task>
     <servers />
   </component>

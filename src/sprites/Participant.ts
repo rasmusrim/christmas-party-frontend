@@ -21,6 +21,7 @@ export class Participant extends Sprite {
   }
 
   render(timestamp: number): void {
+    
     const position = this.getCirclePosition(this.circleProgress / 100 * 360);
     this.graphicsContext.drawImage(this.image, position.x, position.y, this.width, this.height);
 
