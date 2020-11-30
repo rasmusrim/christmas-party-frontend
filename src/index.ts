@@ -1,19 +1,26 @@
 import Controller from "./Controller";
-import {Participant} from "./sprites/Participant";
+import faker from 'faker';
+
 
 const controller = new Controller();
 const div = document.createElement('div');
 div.id = 'stage';
 document.querySelector('body').append(div);
 
+
+
 controller.init('#stage').then(() => {
   controller.start()
 
-  for (let i = 0; i < 10; i++) {
-    setTimeout(() => controller.addParticipant(), i * 500);
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => controller.addParticipant(getName()), i * 1000);
   }
 
 });
+
+function getName(): string {
+  return faker.name.findName();
+}
 
 
 

@@ -30,6 +30,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@types/faker": "^5.1.4",
+    "faker": "^5.1.0",
     "lodash": "^4.17.20"
   }
 }

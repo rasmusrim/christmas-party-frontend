@@ -15,6 +15,7 @@ export default class Controller {
   private participantHeight: number;
   private dancingCircleCenter: Coordinates;
   private dancingCircleSize: CircleSize;
+  private participantFont: string;
 
   init(selector: string) {
     window.addEventListener('resize', () => {
@@ -31,12 +32,13 @@ export default class Controller {
     return this.christmasTree.loadImage();
   }
 
-  addParticipant() {
+  addParticipant(name: string) {
     const participant = new Participant(this.graphicsContext);
     participant.width = this.participantWidth;
     participant.dancingCircleCenter = this.dancingCircleCenter;
     participant.dancingCircleSize = this.dancingCircleSize;
-
+    participant.name = name;
+    participant.font = this.participantFont;
     participant.loadImage().then(() => this.participants[Controller.makeId()] = participant);
 
   }
@@ -56,18 +58,22 @@ export default class Controller {
     this.christmasTree.position.x = (this.canvasWidth / 2 * this.dpi - this.christmasTree.width / 2);
     this.christmasTree.position.y = (this.canvasHeight / 2 * this.dpi - this.christmasTree.height / 2)
 
-    this.participantWidth = this.canvasWidth / 6;
+    this.participantWidth = this.canvasWidth / 15;
     this.participantHeight = this.participantWidth * new Participant(this.graphicsContext).getImageAspectRatio();
 
-    this.dancingCircleCenter = { x: (this.canvasWidth * this.dpi / 2) - this.participantWidth / 2, y: (this.canvasHeight * this.dpi / 2) - this.participantHeight / 2};
+    this.dancingCircleCenter = {
+      x: (this.canvasWidth * this.dpi / 2) - this.participantWidth / 2,
+      y: (this.canvasHeight * this.dpi / 2) - this.participantHeight / 2
+    };
     this.dancingCircleSize = {xRadius: this.canvasWidth / 3 * this.dpi, yRadius: this.canvasHeight / 3 * this.dpi};
+    this.participantFont = this.canvasWidth / 35 + 'px Arial';
 
-    console.log(this.dancingCircleCenter)
 
     Object.values(this.participants).forEach(participant => {
       participant.width = this.participantWidth;
       participant.dancingCircleCenter = this.dancingCircleCenter;
       participant.dancingCircleSize = this.dancingCircleSize;
+      participant.font = this.participantFont;
     });
 
   }
@@ -109,10 +115,10 @@ export default class Controller {
   }
 
   private static makeId(length = 8) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
+    for (var i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
